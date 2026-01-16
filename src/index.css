@@ -2,15 +2,10 @@
 
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
-    width: 5px;
-    border-radius: 10px;
-  }
-  .no-scrollbar::-webkit-scrollbar-thumb {
-    background-color: rgb(0, 0, 0, 0.2);
-    border-radius: 5px;
+    width: 0;
   }
   .no-scrollbar {
-    /*-ms-overflow-style: none;
-    scrollbar-width: none;*/
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
