@@ -1,6 +1,6 @@
 # Todo App - 2026
 
-![image.png](https://github.com/Codegithub2024/ReactJS-TodoApp/src/assets/image1.png)
+<img width="796" height="953" alt="Screenshot 2026-01-16 102959" src="https://github.com/user-attachments/assets/ae0e6417-8161-4328-b361-4441dd5c4082" />
 
 Une application de gestion de tâches moderne et performante, conçue pour offrir une expérience utilisateur fluide avec une persistance des données locale.
 
