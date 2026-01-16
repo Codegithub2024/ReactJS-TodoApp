@@ -1,73 +1,90 @@
-# React + TypeScript + Vite
+Todo App - 2026
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Description du Projet
 
-Currently, two official plugins are available:
+Ce projet est une application de gestion de tâches (Todo List) moderne, développée avec React et TypeScript, et stylisée avec Tailwind CSS. L'objectif principal était de créer une application performante, typée et dotée d'une expérience utilisateur soignée, incluant la persistance des données via le localStorage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+L'application permet aux utilisateurs de :
 
-## React Compiler
+•
+Ajouter de nouvelles tâches avec un titre et une catégorie prédéfinie.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+•
+Marquer des tâches comme complétées ou les supprimer.
 
-## Expanding the ESLint configuration
+•
+Filtrer les tâches par catégorie (ex: Matin, Midi, Soir).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+•
+Filtrer les tâches par statut (Toutes, Complétées, En cours).
+
+•
+Conserver l'état des tâches entre les sessions grâce à la persistance locale.
+
+Technologies Utilisées
+
+Technologie
+Rôle
+React
+Bibliothèque JavaScript pour la construction de l'interface utilisateur.
+TypeScript
+Ajout du typage statique pour une meilleure robustesse et maintenabilité du code.
+Tailwind CSS
+Framework CSS utilitaire pour un stylisme rapide et réactif.
+Hooks Personnalisés
+Utilisation d'un hook useLocalStorage pour la gestion de la persistance des données.
+crypto.randomUUID()
+Génération d'identifiants uniques et sécurisés pour chaque tâche.
+
+
+
+
+Fonctionnalités Techniques Clés
+
+1. Persistance des Données
+
+La persistance est gérée par un hook personnalisé, useLocalStorage, qui encapsule la logique de lecture et d'écriture dans le localStorage du navigateur.
+
+•
+Initialisation Lazy : Le hook utilise la fonction d'initialisation de useState pour lire les données du localStorage une seule fois au montage du composant, optimisant ainsi les performances.
+
+•
+Sécurité : Un bloc try...catch est implémenté pour gérer les erreurs potentielles lors de la lecture des données (ex: données corrompues).
+
+•
+Synchronisation : Un useEffect synchronise l'état de l'application avec le localStorage à chaque modification de la liste de tâches.
+
+2. Logique de Filtrage Optimisée
+
+La logique de filtrage des tâches a été refactorisée pour être déclarative et facile à maintenir, combinant les filtres de catégorie et de statut de manière séquentielle.
+
+TypeScript
 
 ```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+const filteredTodos = todos.filter((todo) => {
+  const categoryMatch = selectedCategory === "" || todo.category === selectedCategory;
+  const statusMatch =
+    status === "all" || todo.complete === (status === "completed");
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+  return categoryMatch && statusMatch;
+});
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Design et Expérience Utilisateur (UX)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+L'interface a été conçue en mettant l'accent sur la clarté et l'esthétique moderne :
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+•
+Design Minimaliste : Utilisation d'une palette de couleurs neutres (noir, blanc, gris) pour une focalisation maximale sur le contenu.
+
+•
+Typographie Distinctive : Choix d'une police serif pour le titre afin de donner un caractère unique à l'application.
+
+•
+Amélioration de l'UX : Les actions sur les tâches utilisent des icônes standard (corbeille pour la suppression, coche pour la complétion) pour une meilleure intuitivité.
+
+Aperçu
+
+![Uploading image.png…]()
+
+
