@@ -8,7 +8,7 @@ export default function TodoApp() {
   const [text, setText] = useState<string>("");
   const [category, setCategory] = useState<Category>("");
   const [selectedCategory, setSelectedCategory] = useState<Category>("");
-  const [status, setStatus] = useState<status>("all");
+  const [status, setStatus] = useState<status>("tout");
   const tl = " first:rounded-l-2xl rounded last:rounded-r-2xl";
   const tl2 = " first:rounded-l-lg rounded last:rounded-r-lg";
 
@@ -41,7 +41,7 @@ export default function TodoApp() {
   const filteredTodos = todos.filter((todo) => {
     const categoryMatch = selectedCategory === "" || todo.category === selectedCategory;
 
-    const statusMatch = status === "all" || todo.complete === (status === "completed");
+    const statusMatch = status === "tout" || todo.complete === (status === "complet");
 
     return categoryMatch && statusMatch;
   });

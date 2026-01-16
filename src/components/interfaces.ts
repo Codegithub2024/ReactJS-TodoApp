@@ -1,8 +1,8 @@
 export type Category = "matin" | "midi" | "soir" | "";
-export type status = "completed" | "incomplete" | "all";
+export type status = "complet" | "incomplet" | "tout";
 
 export const categories: Category[] = ["matin", "midi", "soir"];
-export const statuses: status[] = ["all", "completed", "incomplete"];
+export const statuses: status[] = ["tout", "complet", "incomplet"];
 
 export interface Todo {
   id: string;

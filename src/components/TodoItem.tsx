@@ -47,9 +47,7 @@ export default function TodoItem({ todo, onDelete, onComplete }: Props) {
             (todo.complete ? "line-through text-neutral-300" : " text-neutral-700 ")
           }
         >
-          {todo.text} Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, quam facilis praesentium
-          pariatur magnam eum fugiat repudiandae explicabo veniam impedit! At molestias reprehenderit quo eligendi
-          incidunt voluptatum iusto eius nihil?
+          {todo.text}
         </p>
       </div>
     </div>
