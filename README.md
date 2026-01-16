@@ -1,90 +1,62 @@
-Todo App - 2026
+# Todo App - 2026
 
-Description du Projet
+![Uploading image.png…]()
 
-Ce projet est une application de gestion de tâches (Todo List) moderne, développée avec React et TypeScript, et stylisée avec Tailwind CSS. L'objectif principal était de créer une application performante, typée et dotée d'une expérience utilisateur soignée, incluant la persistance des données via le localStorage.
+Une application de gestion de tâches moderne et performante, conçue pour offrir une expérience utilisateur fluide avec une persistance des données locale.
 
-L'application permet aux utilisateurs de :
+## 🚀 Aperçu du Projet
 
-•
-Ajouter de nouvelles tâches avec un titre et une catégorie prédéfinie.
+Ce projet a été développé dans l'optique de mettre en pratique les concepts avancés de **React** et **TypeScript**, tout en soignant l'aspect visuel grâce à **Tailwind CSS**. L'application permet une gestion complète des tâches quotidiennes avec un système de filtrage intelligent par catégorie et par statut.
 
-•
-Marquer des tâches comme complétées ou les supprimer.
+## Fonctionnalités
 
-•
-Filtrer les tâches par catégorie (ex: Matin, Midi, Soir).
+- **Gestion des Tâches :** Ajout, suppression et marquage de complétion.
+- **Catégorisation :** Organisation des tâches par moments de la journée (Matin, Midi, Soir).
+- **Filtrage Avancé :** Filtres croisés par catégories et par état (tout, complet, incomplet).
+- **Persistance Locale :** Sauvegarde automatique de vos données dans le navigateur via un Hook personnalisé.
+- **Design Moderne :** Interface épurée avec un mode sombre/clair adaptatif et une typographie soignée.
 
-•
-Filtrer les tâches par statut (Toutes, Complétées, En cours).
+## 🛠️ Stack Technique
 
-•
-Conserver l'état des tâches entre les sessions grâce à la persistance locale.
+- **Framework :** React 19
+- **Langage :** TypeScript
+- **Styling :** Tailwind CSS
+- **Icônes :** Lucide React
+- **Identifiants :** API Web Crypto (UUID)
+- **Outil :** bun pour améliorer les performances
 
-Technologies Utilisées
+## 🧠 Concepts Techniques Implémentés
 
-Technologie
-Rôle
-React
-Bibliothèque JavaScript pour la construction de l'interface utilisateur.
-TypeScript
-Ajout du typage statique pour une meilleure robustesse et maintenabilité du code.
-Tailwind CSS
-Framework CSS utilitaire pour un stylisme rapide et réactif.
-Hooks Personnalisés
-Utilisation d'un hook useLocalStorage pour la gestion de la persistance des données.
-crypto.randomUUID()
-Génération d'identifiants uniques et sécurisés pour chaque tâche.
+### Hook de Persistance Personnalisé
+L'application utilise un hook `useLocalStorage` optimisé qui gère la synchronisation de l'état avec l'API `localStorage` du navigateur, incluant la gestion des erreurs.
 
+### Logique de Filtrage Déclarative
+Le filtrage des données est implémenté de manière fonctionnelle et performante, permettant une mise à jour instantanée de l'interface sans rechargement.
 
-
-
-Fonctionnalités Techniques Clés
-
-1. Persistance des Données
-
-La persistance est gérée par un hook personnalisé, useLocalStorage, qui encapsule la logique de lecture et d'écriture dans le localStorage du navigateur.
-
-•
-Initialisation Lazy : Le hook utilise la fonction d'initialisation de useState pour lire les données du localStorage une seule fois au montage du composant, optimisant ainsi les performances.
-
-•
-Sécurité : Un bloc try...catch est implémenté pour gérer les erreurs potentielles lors de la lecture des données (ex: données corrompues).
-
-•
-Synchronisation : Un useEffect synchronise l'état de l'application avec le localStorage à chaque modification de la liste de tâches.
-
-2. Logique de Filtrage Optimisée
-
-La logique de filtrage des tâches a été refactorisée pour être déclarative et facile à maintenir, combinant les filtres de catégorie et de statut de manière séquentielle.
-
-TypeScript
-
-```js
+```typescript
 const filteredTodos = todos.filter((todo) => {
   const categoryMatch = selectedCategory === "" || todo.category === selectedCategory;
-  const statusMatch =
-    status === "all" || todo.complete === (status === "completed");
-
+  const statusMatch = status === "all" || todo.complete === (status === "completed");
   return categoryMatch && statusMatch;
 });
 ```
 
-3. Design et Expérience Utilisateur (UX)
+## 📦 Installation
 
-L'interface a été conçue en mettant l'accent sur la clarté et l'esthétique moderne :
+1. Clonez le dépôt :
+   ```bash
+   git clone https://github.com/Codegithub2024/ReactJS-TodoApp.git
+   ```
 
-•
-Design Minimaliste : Utilisation d'une palette de couleurs neutres (noir, blanc, gris) pour une focalisation maximale sur le contenu.
+2. Installez les dépendances :
+   ```bash
+   npm install
+   ```
 
-•
-Typographie Distinctive : Choix d'une police serif pour le titre afin de donner un caractère unique à l'application.
+3. Lancez le serveur de développement :
+   ```bash
+   npm run dev
+   ```
 
-•
-Amélioration de l'UX : Les actions sur les tâches utilisent des icônes standard (corbeille pour la suppression, coche pour la complétion) pour une meilleure intuitivité.
-
-Aperçu
-
-![Uploading image.png…]()
-
-
+---
+Développé avec passion par [Codegithub2024] - 2026

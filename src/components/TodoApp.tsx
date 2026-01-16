@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { categories, statuses, type Category, type status, type Todo } from "./interfaces";
 import TodoItem from "./TodoItem";
 import { useLocalStorage } from "./useLocalStorage";
@@ -9,8 +9,20 @@ export default function TodoApp() {
   const [category, setCategory] = useState<Category>("");
   const [selectedCategory, setSelectedCategory] = useState<Category>("");
   const [status, setStatus] = useState<status>("tout");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const tl = " first:rounded-l-2xl rounded last:rounded-r-2xl";
   const tl2 = " first:rounded-l-lg rounded last:rounded-r-lg";
+
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = "auto";
+      const maxHeight = 72;
+      const newHeight = Math.min(textarea.scrollHeight, maxHeight);
+      textarea.style.height = `${newHeight}px`;
+      textarea.style.overflowY = textarea.scrollHeight > maxHeight ? "auto" : "hidden";
+    }
+  }, [text]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,21 +64,24 @@ export default function TodoApp() {
         <h1 className="text-4xl/5 tracking-tighter font-[zodiak] font-medium mb-6">Todo App - 2026</h1>
 
         <form onSubmit={handleSubmit}>
-          <div className="flex gap-1">
-            <input
-              className={"p-2 bg-white text-sm border-none outline-none flex-1 " + tl}
+          <div className="flex gap-1 items-start">
+            <textarea
+              ref={textareaRef}
+              className={
+                "p-2 bg-white text-sm no-scrollbar font-medium min-h-9 border-none resize-none outline-none flex-1 leading-tight " +
+                tl
+              }
               autoFocus
-              type="text"
+              rows={1}
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder="Entrez le nom de la tâche"
               required
             />
-
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value as Category)}
-              className={"p-2 bg-white text-sm border-none outline-none " + tl}
+              className={"p-2 bg-white min-h-9 text-sm border-none outline-none " + tl}
               required
             >
               <option value="">-- Catégorie --</option>
@@ -79,7 +94,7 @@ export default function TodoApp() {
 
             <input
               className={
-                "outline-none border-none px-4 py-2 text-sm bg-neutral-950 hover:bg-neutral-800 cursor-pointer text-white font-semibold " +
+                "outline-none border-none min-h-9 px-4 py-2 text-sm bg-neutral-950 hover:bg-neutral-800 cursor-pointer text-white font-semibold " +
                 tl
               }
               value="Ajouter"
