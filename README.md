@@ -1,6 +1,6 @@
 # Todo App - 2026
 
-<img width="796" height="953" alt="Screenshot 2026-01-16 102959" src="https://github.com/user-attachments/assets/ae0e6417-8161-4328-b361-4441dd5c4082" />
+<img width="1883" height="952" alt="Screenshot 2026-01-16 111638" src="https://github.com/user-attachments/assets/e3edabcf-af4a-48ee-9f0b-31e7f6d47990" />
 
 Une application de gestion de tâches moderne et performante, conçue pour offrir une expérience utilisateur fluide avec une persistance des données locale.
 
