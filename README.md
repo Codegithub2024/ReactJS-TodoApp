@@ -52,10 +52,18 @@ const filteredTodos = todos.filter((todo) => {
    ```bash
    npm install
    ```
+   ou
+   ```bash
+   bun install
+   ```
 
 3. Lancez le serveur de développement :
    ```bash
    npm run dev
+   ```
+   ou
+   ```bash
+   bun dev
    ```
 
 ---
